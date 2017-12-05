@@ -267,5 +267,185 @@ type({}) dict
   2. 集合(set) 无序，无索引，不能切片
   3. 字典(dict) key:value 键值对
 
+### 第三天
 
+#### 变量
+1. 什么是变量？一组数据的名字
+```
+a = [1,2,3,5,6]
+print(a)
+b = [1,2,3]
+a*3 + b + a
+
+//变量名必须有意义
+skill = ['eat','drink']
+
+```
+2. 变量命名规则
+- 字母，数字，下划线，且不能以数字开头
+- 系统保留关键字不能用在变量名中
+- 变量名事区分大小写
+- 变量没有类型限制
+
+3. 值类型和引用类型
+```
+//值类型(不可改变) int str tuple
+a = 1
+b = a
+a = 3
+
+//引用类型（可变） list set dict
+a = [1,2,3]
+b = a
+a[0] = '1'
+
+//生成新的变量，内存地址不同
+a = 'hello'
+id(a)
+a = a+ 'world'
+id(a) 
+
+```
+4. 列表的可变和元组的不可变
+```
+代码稳定性 => 元组
+a = (1,2,3,[1,2,[a,b,c]])
+a[3][2][1] => b
+
+a = (1,2,3,[1,2,4])
+a[3][2] = '4'  改变的是元组
+
+```
+5. 运算符号
+```
++ - * / //
+%  
+2**2  => 4
+2**3  => 8
+
+赋值运算符
+= —= += /= %= //= *= **=
+c = 1
+c = c + 1  => c += 1 => c++ 报错 python 不支持
+
+关系运算符 返回值是布尔值
+==  != > < >=  <=
+1 == 1 True
+1 > 1 False
+1 >= True
+1 != 2 True
+
+b = 1
+b += b>=1 => b = b+ True => b = b+1 => b = 2
+'a' > 'b' False  比较的 ascii 码的大小
+'abc' < 'abd' True
+[1,2,3] < [1,2,4] True
+(1,2,3) < (1,3,2) True
+
+
+逻辑运算符 => 操作类型和返回类型都是布尔类型
+and or not
+and 且
+or 或
+not 取反，操作一个变量
+
+1 and 1  => 1
+'a' and 'b' => b
+'a' or 'b' => a
+not 'a' => False
+
+int float  0 被认为是False, 非 0 表示 True
+not 0.1 False
+
+str  空字符串 False,其他的是 True
+not '' True
+
+list [] False, 其他的是 True
+元组同 list
+
+[1] or []  => [1]
+[] or [1] => [1]
+
+'a' and 'b' => 'b'
+'' and 'b' => ''
+ 
+1 and 2  => 2
+1 or 2  => 1
+0 and 1  => 0
+1 and 0 => 0
+0 or 1 => 1
+1 or 1 => 1
+
+ 
+成员运算符 一个元素是否在另一个元素里，返回的是布尔值
+in not in
+a = 1
+a in [1,2,3,4,5] True
+a not in [1,2,3] False
+b = 6
+b in [1,2,3,4,5]
+
+b = 'a'
+b in {'c':1} False
+b = 1
+b in {'c':1} False
+b = 'c'
+b in {'c':1} True
+
+身份运算符 返回的是布尔值
+is is not
+
+a = 1
+b = 2
+a is b False
+a = 1
+b = 1.0
+a == b  True
+a is b  False 
+is 比较两个变量的内存地址是否相等
+not is 比较两个变量的内存地址是否不相等
+
+a = {1,2,3}
+b = {2,1,3}
+a == b True
+a is b False
+
+c = (1,2,3)
+d = (2,1,3)
+c == d False
+c is d False
+
+a == b 值判断
+a is b  身份判断
+type a  类型判断
+
+a = 'hello'
+type(a) == int
+type(a) == str
+
+//判断变量类型,推荐使用，可以判断对象的子类，而type不可以
+isinstance(a,str) => True
+isinstance(a,(int,str,float)) => True
+isinstance(a,(int,float)) => False
+
+对象有三个特征 id,value,type
+
+位运算符
+& | ^ ~ << >> 把数字当作二进制数字处理
+& 按位与
+| 按位或
+~ 按位异或
+<< 左移动
+>> 右移动
+
+10  
+&    =>  1 0  => 2
+11
+
+10
+|  =>   11 => 3
+11
+
+
+```
 
