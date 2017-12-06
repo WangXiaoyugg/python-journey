@@ -496,7 +496,7 @@ not a or b + 2 == c
 todo 
 1. 切换系统默认的python版本 为 3.6.2 而不是 2.7.1
 2. pylint 的版本 切换为 3.6.2, 而不是 2.7.1
-`` 
+```
 6. snippet ,嵌套分支，代码块
 - snipppet 代码块
 - pass 占位
