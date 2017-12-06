@@ -269,7 +269,7 @@ type({}) dict
 
 ### 第三天
 
-#### 变量
+#### 变量和运算符
 1. 什么是变量？一组数据的名字
 ```
 a = [1,2,3,5,6]
@@ -449,3 +449,92 @@ isinstance(a,(int,float)) => False
 
 ```
 
+### 第四天
+
+#### 表达式
+1. 表达式是运算符和操作数所构成的序列
+```
+c = int('1') + 2
+
+a = 1 
+b = 2
+c = 3
+a + b * c => 7
+a or b and c  =>  a or (b and c) => 1
+```
+2. 运算符的优先级
+- 同级的从左到右  => 左结合
+- () 的优先级最高
+- 赋值运算符 =  从右到左 => 右结合
+```
+a = 1
+b = 2
+c = 2
+
+not > and > or
+not a or b + 2 == c
+(not a) or  ((b+2) == c))
+```
+3. 在文件编写代码
+- 编码工具 IDE pycharm
+- 编辑器  vscode sublime
+- 编写代码保存为 xxx.py
+- 在终端里找到对应的目录 使用命令 python xxx.py
+
+4. vscode 开发环境和python 插件安装
+- 插件 python termial vim veiw in browser vscode-icons
+- 编辑器具备的三个功能：智能感知，调试，语法检测
+
+5. 流程控制语句
+- 缩进表示代码块
+- if else for while
+- 注释 # 单行 ， 多行注释 ''' '''
+- python 不可以混淆和压缩，因为缩进语法 
+- 变量名用 _ 分隔
+- 使用 pylint 检查 代码
+```
+todo 
+1. 切换系统默认的python版本 为 3.6.2 而不是 2.7.1
+2. pylint 的版本 切换为 3.6.2, 而不是 2.7.1
+`` 
+6. snippet ,嵌套分支，代码块
+- snipppet 代码块
+- pass 占位
+- 代码块
+- if else 嵌套，把内层的if- else 封装函数，减少嵌套
+- elif 减少判断
+- python 中为什么没有 switch case [文档地址](https://docs.python.org/2/faq/design.html#why-isn-t-there-a-switch-or-case-statement-in-python)
+```
+python 官方认为 switch case 你可以用 if elif else 代替
+但是python switch case 还没有一致认同的方案以及怎么进行范围测试
+官方例子：
+假若你要从非常多的数字中选择符合条件的，你可以创建一个字典，然后使map字典的值去调用
+def function_1(...):
+    ...
+
+functions = {'a': function_1,
+             'b': function_2,
+             'c': self.method_1, ...}
+
+func = functions[value]
+func()
+
+除了 使用对象的方法进行调用，你也可以简单使用pyhton内部方法getattr()去调用特定名字的方法
+def visit_a(self, ...):
+    ...
+...
+
+def dispatch(self, value):
+    method_name = 'visit_' + str(value)
+    method = getattr(self, method_name)
+    method()
+python 官方建议给方法名添加后缀 ，如 visit_, 没有这样的后缀_，假若值来自一个不可靠的数据源
+攻击者可以轻松调用 你的对象的任意方法    
+```
+- 不报错代码结果不符合预期，注意变量的数据类型是否改变
+```
+# a b 不能同时为False
+if（ a != False or b !== False)
+    print('xxx')
+可以简写成  a or b    
+```
