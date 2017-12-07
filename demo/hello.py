@@ -1,6 +1,7 @@
 ''' 
 my first python code
 '''
+HELLO = 'Hello Python'
 
 ACCOUNT = 'wangxiaoyu'
 PASSWORD = '123456'
