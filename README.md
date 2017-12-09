@@ -538,3 +538,303 @@ if（ a != False or b !== False)
     print('xxx')
 可以简写成  a or b    
 ```
+
+### 第五天
+
+#### 循环
+1. while else 知道一个目标，达到目标就退出
+2. for 主要用来遍历 序列，集合，字典 break,continue
+3. range(0,10) =>  0 - 9  rang(10,0,-2)
+4. 会写代码，很容易，写出高性能，封装性(可复用)代码很难
+5. 写代码考验抽象能力
+6. 代码优美,高性能，封装性(可复用)
+
+### 第六天
+
+#### 包，模块，类
+1. 包(文件夹) > 模块(xxx.py) > 类(写在xxx.py里面) > 函数/变量
+2. 包和模块的名字
+```
+相同的模块不同的包，加上包的名字，命名空间
+包可以有子包
+包文件夹下面必须有 __init__.py  => 模块名就是 包的名字
+```
+3. import 必须先定义，才能使用，导入的是一个模块，包的嵌套时必须加上 命名空间
+```
+import xxx.xx.xx as x
+print(x.m);
+
+导入具体变量，函数，不需要命名空间
+from t.c7 import a
+print(a)
+from t.ct import *
+
+# * 导出所需的变量，函数,__all__ 内置模块
+__all__ = ['a','c'] 
+
+__pycache__ 文件夹是python 编译的二进制文件的缓存，
+```
+4. __init__.py 的用法
+- vscode设置 files.exclude ,__pycache__ true
+- 导入多个模块
+```
+from c9 import a,b,c
+
+导入的模块特别多,需要换行
+from c9 import a,b,\
+c
+from c9 import (a,b,
+c)
+
+print(a)
+
+```
+- 当一个包被导入的时候，包的 __init__.py 会被首先执行
+- __init__.py 的使用场景
+```
+xxx包
+__init__.py 文件
+
+决定哪些模块被导入，决定包可以使用哪些模块
+__all__ = [a,b,c]
+
+公共使用的内置模块，sys,io,date
+在__init__.py 中引入
+import sys
+import io
+import date
+
+在其他模块中使用内置的模块
+impory xxx.sys
+
+```
+- 包和模块不会被重复导入
+- 避免循环导入,避免多个文件的循环引用
+```
+p1.py
+from p2 import p2
+print(p2)
+
+p2.py
+from p1 import p1
+print(p1)
+```
+- 一旦导入模块，会执行模块的代码
+- 应用程序只有一个入口文件
+
+5. 模块的内置变量
+```
+print(dir())
+```
+6. 入口文件
+- __package__ 为 NoneType
+- __name__ 为 __main__
+- __file__ 为 文件名
+
+7. __name__ 的使用场景
+```
+import sys
+infos = dir(sys)
+print(info)
+
+if __name__ == '__main__':
+    print('This is app')
+print('This is module')
+
+//doc 文档自动生成工具
+遍历 每个文件 __doc__
+
+//成为模块必须在包目录下面
+python -m demo.dir.py    
+```
+8. 相对导入和绝对导入
+```
+目录结构
+DEMO
+- package1
+- package2
+- package3
+- main.py 决定顶级包的位置
+
+绝对导入必须从顶级包开始
+
+相对导入
+from ..m4 import m
+from .m1 import n
+
+from ...m5 import n
+valueerror,试图去引入超过顶级包的模块?
+把m5放入 package2 内
+
+main.py 是入口文件 ，是不能使用相对导入
+
+如果非要把 main.py 当模块使用, 使用相对导入
+
+执行换到上一级目录
+python -m demo.main
+
+```
+
+### 第七天
+
+#### 函数
+
+1. 函数
+```
+print()
+a = 1.2386
+print(round(a,2))
+```
+- 功能性
+- 封装性
+- 复用性
+- 组织代码
+
+2. 函数定义和运行特点
+```
+def xxx():
+    xxx = 'xxx'
+    return xxx:
+
+def xxxx():
+    print('xxxx')    
+```
+3. 函数返回多个值，遇到return 就终止了
+4. 序列解包,两边元素要相等
+```
+a = 1
+b = 2
+c = 3
+
+a,b,c = 1,2,3
+
+d = 1,2,3
+print(type(d)) tuple
+
+a,b,c = d
+
+a = 1
+b = 1
+c = 1
+
+a = b = c = 1
+a,b,c = 1,1,1
+
+```
+5. 必须参数和关键字参数
+- 必须参数必须传入，不传入报错
+- 形参和实参
+- 关键字参数，不考虑参数的顺序,在传递实参的时候
+
+6. 默认参数
+```
+def add(a,b=1,c=2):
+    return a+b+c
+
+add(1)
+add(1,2)
+add(1)
+一般要遵守顺序
+使用关键参数可以不遵守顺序
+add(1,c=10)
+
+
+```
+7. 可变参数
+```
+def demo(*param):
+    print(param)
+    print(type(param)) // tuple
+
+demo(1,2,3,4,5,6)    
+demo((1,2,3,5,6)) //((1,2,3,4,5))
+
+a = (1,2,3,4,5,6)
+demo(*a) //(1,2,3,4,5,6)
+
+def demo(param1,param2=2,*param):
+    print(param1)
+    print(param2)
+    print(param)
+
+demo('a',1,2,3 ) // a 1 (2,3)
+
+def demo(param1,*param,param2=2):
+    print(param1)
+    print(param2)
+    print(param)
+
+demo('a',1,2,3,'param')
+// a (1,2,3,'param') 2
+
+demo('a',1,2,3,param2='param')
+// a (1,2,3) 'param'
+
+```
+- 保证函数参数类型的简单
+
+8. 关键字可变参数 
+```
+def sum(*param):
+    sum = 0
+    for i in param
+        sum += i * i
+    print(sum)
+
+sum(1,2,3,4,5,6)
+
+def city_temp(**param):
+    for key,value in param.items():
+        print(key,':',value)
+
+city_temp(bj='32',xh='23c',sh='32c') //dict 类型       
+
+a = {'bj':'32','xh':'23c' ,sh:'32c'}
+city_temp(**a)
+```
+9. 变量的作用域
+```
+c = 50  // 全局变量
+
+def add(x,y):
+    c = x + y  //局部变量
+    print(c)
+
+add(1,2)  // 3
+print(c) //50
+
+# 没有块级作用域，for 循环的变量和函数的变量是同一层级
+
+# 作用域链，层级寻找
+c = 1
+def func1():
+    c = 2
+    def func2():
+        c = 3
+        print(c)
+    func2()
+
+func1()        
+```
+10. global 关键字,成为全局变量
+```
+def demo():
+    global c 
+    c = 2
+
+demo()
+print(c)    
+```
+11. 练习题
+```
+游戏的经济系统
+五行石的合成  1 - 8 级
+来源 自己合成 ，其他玩家购买
+市场货币:金币
+五行石 合成 金币，钻石，体力
+
+目标得到 6级五行石
+1. 1级 五行石 消耗金币和钻石
+2. 1级 => 3级 五行石 12个1级， 
+
+```
