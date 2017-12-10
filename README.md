@@ -838,3 +838,95 @@ print(c)
 2. 1级 => 3级 五行石 12个1级， 
 
 ```
+### 第八天
+
+#### 类和面向对象
+1. 类和 实例化
+```
+class Student():
+    name = ''
+    age = 0
+
+    def print_file(self):
+        print('name: '+ self.name)
+        print('age: '+ str(self.age))
+
+student = Student()
+student.print_file()
+```
+2. 类的基本作用:封装
+3. 模块功能单一，要么定义类，要么执行类
+4. 方法和函数的区别
+- c, C++ 叫函数，面向过程的概念，不定义在类里
+- java ,C# 叫方法，面向对象的概念，设计层面，定义类里，
+- 变量在类里叫数据成员，不在类里叫变量
+5. 类和对象
+- 类定义特征和行为
+- 类实例化就是对象
+6. 构造函数
+7. 局部模块中的变量和类中的变量
+8. 实例变量和类变量(类共有的变量)
+9. 类与对象的变量查找顺序
+10. self 和 实例方法
+- self 类似 this ,self 可以改为 this
+- 强制要求在方法定制第一个参数为 self
+- self就是当前调用方法的实例
+11. 实例方法访问实例变量和类变量
+```
+python 类
+    - 变量
+        - 类变量
+        - 实例变量
+    - 方法
+        - 实例方法
+        - 类方法
+        - 静态方法
+    - 构造函数
+    - 成员的可见性
+        - 公开
+        - 私有
+    - 面向对象的3大特性
+        - 封装性
+        - 继承性(最难)
+        - 多态性    
+```
+```
+print(Student.sum1)
+print(self.__class__.sum1)
+
+@classmethod
+def plus_sum(cls):
+    cls.sum += 1
+    print(cls.sum)
+
+@staticmethod
+    def add(x,y):
+        print('This is a static method')   
+
+
+Student.plus_sum()
+
+# 其他语言
+public name
+private sum
+
+python
+方法和变量以 __ 开头，构造函数除外 __init__
+student1.__score = -1  # 不是不报错，而是新增了一个属性  
+print(student1.__score)
+
+print(student2._Student__score)
+```
+12. 静态方法尽量可以类方法代替
+13. 对类的成员的变量赋值通过方法，可以做校验，不要直接赋值
+14. python的私有变量 __score 更换为 _Student__score
+15. 继承， 学生的类 继承 人的类
+- python 可以单继承和多继承
+16. 子类调用父类的方法
+```
+People.__init__(self,name,age)
+# 关键字super 调用父类
+super(Student,self).__init__(name,age)
+super(Student,self).do_homeword()
+```
+- 开闭原则，对类的更改的是封闭的
