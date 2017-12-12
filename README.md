@@ -979,3 +979,30 @@ print(r);
 - 工作上使用别人写好的表达式，效率高
 - 学习上多使用正则表达式
 
+### 第十天
+
+#### JSON
+1. 什么事JSON
+- JSON - Javascript Object Notation
+- 轻量级的数据交换格式
+- JSON字符串符合JSON的数据格式
+- XML 也是数据交换格式
+
+2. 优点
+- 易于阅读
+- 跨语言交换数据
+- 易于解析
+- 网络传输效率高
+
+3. 使用场景
+- 网站后台 => JSON  => 浏览器
+- 不同语言服务的JSON 数据交换
+
+4. python中使用JSON
+5. 反序列化，把json字符串转化成对应的数据结构
+6. 序列化 
+7. JSON 对象,JSON,JSON字符串
+- JSON 是 基于 ECMA规范生成的 ，不是javascript的附属品
+- JSON 有自己的数据类型
+- 中间语言的数据交换格式
+- REST服务使用json
