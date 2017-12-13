@@ -997,7 +997,6 @@ print(r);
 3. 使用场景
 - 网站后台 => JSON  => 浏览器
 - 不同语言服务的JSON 数据交换
-
 4. python中使用JSON
 5. 反序列化，把json字符串转化成对应的数据结构
 6. 序列化 
@@ -1006,3 +1005,54 @@ print(r);
 - JSON 有自己的数据类型
 - 中间语言的数据交换格式
 - REST服务使用json
+
+### 第十天
+
+#### 枚举
+- Enum 枚举
+- Enum 类 和普通的类区别
+```
+//都是可变的
+//没有防止相同标签的功能
+yellow = 1
+green = 2
+{'yellow':1,'green':2}
+
+
+class TypeDiamond():
+    yellow = 1
+    green = 2
+
+from enum import Enum
+
+class VIP(Enum):
+    YELLOW = 1
+    GREEN = 2
+    BLACK = 3
+    RED = 4
+
+
+# 枚举的意义重在标签，而不是数值
+print(VIP.YELLOW) 
+
+// 枚举不可变，       
+```
+- 枚举的比较,只能在枚举类型之间比较，is ==
+- 枚举转换
+```
+数据库里用数字代替枚举类
+//可读性差
+if a == 1:
+    print()
+else if a== 2: 
+    print()  
+
+if a == VIP.YELLOW:
+    print()
+else if b == VIP.BLACK:
+    print()   
+
+```
+- Enum ,IntEnum ,unqiue
+- 枚举类型是单例模式实现的
+
