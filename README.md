@@ -1075,3 +1075,44 @@ print(f.__closure[0].cell_contents)
 - 闭包间接实现在函数外部调用函数内部的变量
 - 闭包容易造成内存泄露
 
+### 第十二天
+
+#### 函数式编程
+1. lambda
+2. 三元表达式 x if x > y else y
+3. map
+4. map 结合 lambda
+5. reduce
+6. filter
+7. 命令式编程和函数式编程
+```
+命令式
+def if else for
+
+函数式
+map reduce filter
+lambda 
+```
+8. 装饰器 可变参数，关键字参数
+- 满足复用性
+- 符合开闭原则
+9. AOP 面向切片编程
+
+### 第十三天
+
+#### 杂记
+1. 字典代替switch case
+2. 列表推导式
+3. 字典编写推导式
+4. None
+5. 对象存在不一定是True
+6. 装饰器的副作用
+- fn.__name__ 被改变，无法预知的错误
+```
+from functools import wraps
+@wraps(func)
+def wrapper():
+
+```
+
+
