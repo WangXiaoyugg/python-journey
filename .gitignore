@@ -1,2 +1,4 @@
 *.vscode
+/flask_demo/venv/*
+!/flask_demo/venv/hello.py
 
